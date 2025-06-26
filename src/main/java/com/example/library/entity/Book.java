@@ -6,7 +6,6 @@ import jakarta.validation.constraints.*;
 import lombok.*;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Book {
@@ -25,4 +24,13 @@ public class Book {
 
     @Min(0)
     private int amount;
+
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
+    public String getAuthor() { return author; }
+    public void setAuthor(String author) { this.author = author; }
+    public int getAmount() { return amount; }
+    public void setAmount(int amount) { this.amount = amount; }
 }

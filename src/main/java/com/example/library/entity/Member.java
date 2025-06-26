@@ -24,6 +24,15 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<BorrowedBook> borrowedBooks = new ArrayList<>();
 
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public LocalDate getMembershipDate() { return membershipDate; }
+    public void setMembershipDate(LocalDate membershipDate) { this.membershipDate = membershipDate; }
+    public List<BorrowedBook> getBorrowedBooks() { return borrowedBooks; }
+    public void setBorrowedBooks(List<BorrowedBook> borrowedBooks) { this.borrowedBooks = borrowedBooks; }
+
     @PrePersist
     public void onCreate() {
         this.membershipDate = LocalDate.now();
