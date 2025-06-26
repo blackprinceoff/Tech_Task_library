@@ -4,6 +4,7 @@ import com.example.library.entity.Member;
 import com.example.library.service.MemberService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,10 @@ public class MemberController {
 
     @PostMapping
     public ResponseEntity<Member> createMember(@Valid @RequestBody Member member) {
-        return ResponseEntity.ok(memberService.createMember(member));
+        // Явно встановлюємо id як null для нового об'єкта
+        member.setId(null);
+        Member savedMember = memberService.createMember(member);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedMember);
     }
 
     @GetMapping
